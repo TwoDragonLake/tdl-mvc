@@ -1,5 +1,9 @@
 package twodragonlake.twodragonlake_mvc;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -35,4 +39,18 @@ public class AppTest
     {
         assertTrue( true );
     }
+    
+    public void testlist(){
+        List<String> list = new ArrayList<String>();  
+        System.out.println(list instanceof List);  
+        System.out.println(list instanceof ArrayList);  
+          
+      System.out.println(list.getClass()); 
+        System.out.println(List.class); 
+        System.out.println(ArrayList.class);  
+          
+        System.out.println(list.getClass().isAssignableFrom(List.class));  
+        System.out.println(List.class.isAssignableFrom(list.getClass()));
+    }
+    
 }

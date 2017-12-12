@@ -23,12 +23,16 @@ public class AnnotationUtil {
         if (annotation != null) {
             return annotation;
         }
+        //在当前clazz的所有接口中查找
         for (Class<?> ifc : clazz.getInterfaces()) {
             annotation = findAnnotation(ifc, annotationType);
             if (annotation != null) {
                 return annotation;
             }
         }
+        //isAssignableFrom   是用来判断一个类Class1和另一个类Class2是否相同或是另一个类的超类或接口
+        //此处判断Annotation是不是clazz的超类或者接口，不是返回true
+        //在当前clazz的注解的超类型后者接口上查找
         if (!Annotation.class.isAssignableFrom(clazz)) {
             for (Annotation ann : clazz.getAnnotations()) {
                 annotation = findAnnotation(ann.annotationType(), annotationType);
@@ -37,6 +41,7 @@ public class AnnotationUtil {
                 }
             }
         }
+        //在当前clazz的父类上查找
         Class<?> superClass = clazz.getSuperclass();
         if (superClass == null || superClass == Object.class) {
             return null;
