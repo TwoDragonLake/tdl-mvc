@@ -113,7 +113,7 @@ public class DispatchServlet extends HttpServlet
 		{
 			logger.error("SMVC 初始化失败");
 			ex.printStackTrace();
-			throw ex;
+			throw new RuntimeException();
 		}
 
 	}
